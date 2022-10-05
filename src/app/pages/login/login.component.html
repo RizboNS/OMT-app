@@ -1,1 +1,49 @@
-
+<form class="form-container">
+  <mat-card>
+    <mat-card-title>Welcome</mat-card-title>
+    <mat-card-subtitle>Please login to access all functions</mat-card-subtitle>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          placeholder="example@example.com"
+          [formControl]="email"
+          required
+        />
+        <mat-error *ngIf="email.invalid">{{
+          getErrorMessageEmail()
+        }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          [formControl]="password"
+          required
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.invalid">{{
+          getErrorMessagePassword()
+        }}</mat-error>
+      </mat-form-field>
+      <button
+        mat-flat-button
+        class="primary-btn"
+        color="primary"
+        (click)="submit($event)"
+      >
+        Login
+      </button>
+    </mat-card-content>
+  </mat-card>
+</form>

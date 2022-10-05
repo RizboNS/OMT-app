@@ -1,0 +1,6 @@
+<div *ngIf="!(authService.isLoggedIn$ | async)">
+  <p>dashboard not working!</p>
+</div>
+<div *ngIf="authService.isLoggedIn$ | async">
+  <p>dashboard works!</p>
+</div>

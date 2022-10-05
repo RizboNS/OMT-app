@@ -1,0 +1,16 @@
+.nav-container {
+  height: 100%;
+}
+.sidenav {
+  padding: 20px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.wrapper {
+  width: 95%;
+  margin: auto;
+}
+a:hover {
+  background-color: #641a84;
+}

@@ -1,2 +1,40 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<mat-drawer-container class="nav-container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
+  <div>
+    <mat-toolbar color="primary">
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+        (click)="drawer.toggle()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>{{ title }}</span>
+      <span class="example-spacer"></span>
+      <a
+        *ngIf="!(authService.isLoggedIn$ | async)"
+        mat-flat-button
+        color="primary"
+        routerLink="/login"
+        >Login</a
+      >
+      <a
+        *ngIf="authService.isLoggedIn$ | async"
+        mat-flat-button
+        color="primary"
+        (click)="authService.logout()"
+        >Logout</a
+      >
+    </mat-toolbar>
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>

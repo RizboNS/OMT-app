@@ -1,0 +1,27 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 5rem;
+}
+
+mat-card {
+  padding: 2rem;
+}
+mat-card-content {
+  margin-top: 2rem;
+}
+
+mat-form-field {
+  display: block;
+  width: 350px;
+}
+.primary-btn {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 0.5rem;
+}
+mat-form-field, .primary-btn {
+  margin-top: 1rem;
+}
