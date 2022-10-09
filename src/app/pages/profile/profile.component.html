@@ -1,2 +1,16 @@
-<p>profile works!</p>
-{{ id }}
+<ng-container *ngIf="user">
+  <mat-card class="example-card">
+    <mat-card-title>{{ user.fullName }}</mat-card-title>
+    <mat-card-subtitle
+      >{{ user.email }}, {{ user.employeeId }},
+      {{ user.role }}</mat-card-subtitle
+    >
+    <mat-card-content>
+      {{ user.ordersEdited }}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

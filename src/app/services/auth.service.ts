@@ -4,6 +4,7 @@ import { UserService } from './user.service';
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { TokenObj } from '../models/token-obj.model';
+import { LoaderService } from './loader.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,11 @@ export class AuthService {
   isLoggedIn$ = this._isLoggedIn$.asObservable();
   requestSent$ = this._requestSent$.asObservable();
   private tokenObj!: TokenObj;
-  constructor(private userService: UserService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private loaderService: LoaderService
+  ) {
     const token = localStorage.getItem('auth-token');
     this._isLoggedIn$.next(!!token);
     if (localStorage.getItem('auth-token')) {
@@ -26,6 +31,7 @@ export class AuthService {
   }
 
   login(user: {}) {
+    this.loaderService.changeLoadingState();
     this._requestSent$.next(true);
     this.userService.login(user).subscribe({
       next: (res: { token: string }) => {
@@ -35,9 +41,11 @@ export class AuthService {
         this._loggedInUserId$.next(this.tokenObj._id);
         this._requestSent$.next(false);
         this.router.navigate(['profile', this.tokenObj._id]);
+        this.loaderService.changeLoadingState();
       },
       error: (err: any) => {
         this._requestSent$.next(false);
+        this.loaderService.changeLoadingState();
       },
     });
   }
@@ -48,5 +56,14 @@ export class AuthService {
     localStorage.removeItem('auth-token');
     this._loggedInUserId$.next('');
     this._isLoggedIn$.next(false);
+    this.tokenObj = {
+      iat: '',
+      role: '',
+      _id: '',
+    };
+    this.router.navigate(['login']);
+  }
+  getUserRole() {
+    return this.tokenObj != undefined ? this.tokenObj.role : '';
   }
 }

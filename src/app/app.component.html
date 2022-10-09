@@ -16,7 +16,7 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
-      <span>{{ title }}</span>
+      <span routerLink="dashboard" class="title">{{ title }}</span>
       <span class="example-spacer"></span>
       <a
         *ngIf="!(authService.isLoggedIn$ | async)"
@@ -33,6 +33,7 @@
         >Logout</a
       >
     </mat-toolbar>
+    <app-loader *ngIf="loaderService.isLoading"> </app-loader>
     <div class="wrapper">
       <router-outlet></router-outlet>
     </div>

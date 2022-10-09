@@ -18,6 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     LoginComponent,
     DashboardComponent,
     ProfileComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
