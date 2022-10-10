@@ -4,12 +4,15 @@
 .sidenav {
   padding: 20px;
 }
-.example-spacer {
+.spacer {
   flex: 1 1 auto;
 }
 .wrapper {
   width: 95%;
   margin: auto;
+}
+a {
+  margin-left: 1rem;
 }
 a:hover {
   background-color: #641a84;

@@ -19,6 +19,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { LoaderComponent } from './components/loader/loader.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { OrdersTableComponent } from './components/orders-table/orders-table.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -27,6 +32,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     DashboardComponent,
     ProfileComponent,
     LoaderComponent,
+    OrdersComponent,
+    OrdersTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +48,9 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
+    MatBadgeModule,
+    MatSortModule,
+    MatTableModule,
   ],
   providers: [
     {

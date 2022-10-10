@@ -17,7 +17,44 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span routerLink="dashboard" class="title">{{ title }}</span>
-      <span class="example-spacer"></span>
+      <a
+        *ngIf="authService.isLoggedIn$ | async"
+        mat-flat-button
+        color="primary"
+        (click)="initOrders()"
+        ><mat-icon>cached</mat-icon></a
+      >
+      <a
+        *ngIf="authService.isLoggedIn$ | async"
+        mat-flat-button
+        color="primary"
+        matBadge="{{ pendingOrders.length }}"
+        matBadgePosition="after"
+        matBadgeColor="accent"
+      >
+        Pending Orders
+      </a>
+      <a
+        *ngIf="authService.isLoggedIn$ | async"
+        mat-flat-button
+        color="primary"
+        matBadge="{{ allOpenOrders.length }}"
+        matBadgePosition="after"
+        matBadgeColor="accent"
+      >
+        All Open Orders
+      </a>
+      <a
+        *ngIf="authService.isLoggedIn$ | async"
+        mat-flat-button
+        color="primary"
+        matBadge="{{ agentOpenOrders.length }}"
+        matBadgePosition="after"
+        matBadgeColor="accent"
+      >
+        Agent Open orders
+      </a>
+      <span class="spacer"></span>
       <a
         *ngIf="!(authService.isLoggedIn$ | async)"
         mat-flat-button
@@ -33,7 +70,7 @@
         >Logout</a
       >
     </mat-toolbar>
-    <app-loader *ngIf="loaderService.isLoading"> </app-loader>
+    <app-loader *ngIf="loaderService.isLoading"></app-loader>
     <div class="wrapper">
       <router-outlet></router-outlet>
     </div>
