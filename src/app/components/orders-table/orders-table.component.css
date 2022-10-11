@@ -6,3 +6,9 @@ table {
 th.mat-sort-header-sorted {
   color: black;
 }
+.row {
+  cursor: pointer;
+}
+.row:hover {
+  background-color: #878181;
+}

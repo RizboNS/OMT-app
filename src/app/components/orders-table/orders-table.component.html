@@ -7,7 +7,11 @@
     <th mat-sort-header="product">Product</th>
   </tr>
 
-  <tr *ngFor="let order of sortedData" class="row">
+  <tr
+    *ngFor="let order of sortedData"
+    class="row"
+    (click)="selectOrder(order._id)"
+  >
     <td>{{ order._id }}</td>
     <td>{{ order.status }}</td>
     <td>
