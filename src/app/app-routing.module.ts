@@ -17,7 +17,7 @@ const routes: Routes = [
     },
   },
   {
-    path: 'orders',
+    path: 'orders/:by',
     component: OrdersComponent,
     canActivate: [HasRoleGuard],
     data: {

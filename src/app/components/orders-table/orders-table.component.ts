@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Sort } from '@angular/material/sort';
+import { Observable } from 'rxjs';
 import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
 
@@ -8,13 +15,15 @@ import { OrderService } from 'src/app/services/order.service';
   templateUrl: './orders-table.component.html',
   styleUrls: ['./orders-table.component.css'],
 })
-export class OrdersTableComponent implements OnInit {
+export class OrdersTableComponent implements OnInit, OnChanges {
+  @Input() orders$: Observable<Order[]>;
+  sortedData: Order[];
   orders: Order[] = [];
 
-  sortedData: Order[];
   constructor(private orderService: OrderService) {}
   sortData(sort: Sort) {
     const data = this.orders.slice();
+
     if (!sort.active || sort.direction === '') {
       this.sortedData = data;
       return;
@@ -49,11 +58,12 @@ export class OrdersTableComponent implements OnInit {
   compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.orders$.subscribe((res) => (this.orders = res));
+    this.sortedData = this.orders.slice();
+  }
   ngOnInit(): void {
-    this.orderService.pendingOrders$.subscribe((res) => {
-      this.orders = res;
-      this.sortedData = this.orders.slice();
-      console.log(this.orders);
-    });
+    this.orders$.subscribe((res) => (this.orders = res));
+    this.sortedData = this.orders.slice();
   }
 }

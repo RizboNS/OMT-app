@@ -1,4 +1,13 @@
 <mat-card>
-  <mat-card-title>Orders - TODO </mat-card-title>
-  <app-orders-table></app-orders-table>
+  <mat-card-title>
+    Orders to do
+    <span class="spacer"></span>
+    <button mat-flat-button color="primary" (click)="loadOrders()">
+      <mat-icon>cached</mat-icon>
+    </button>
+  </mat-card-title>
+  <mat-divider></mat-divider>
+  <ng-container *ngIf="(orders$ | async).length > 0">
+    <app-orders-table [orders$]="orders$"></app-orders-table>
+  </ng-container>
 </mat-card>

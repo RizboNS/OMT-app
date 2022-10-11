@@ -28,9 +28,10 @@
         *ngIf="authService.isLoggedIn$ | async"
         mat-flat-button
         color="primary"
-        matBadge="{{ pendingOrders.length }}"
+        matBadge="{{ (orderService.pendingOrders$ | async).length }}"
         matBadgePosition="after"
         matBadgeColor="accent"
+        routerLink="orders/pending"
       >
         Pending Orders
       </a>
@@ -38,9 +39,10 @@
         *ngIf="authService.isLoggedIn$ | async"
         mat-flat-button
         color="primary"
-        matBadge="{{ allOpenOrders.length }}"
+        matBadge="{{ (orderService.allOpenOrders$ | async).length }}"
         matBadgePosition="after"
         matBadgeColor="accent"
+        routerLink="orders/all-open"
       >
         All Open Orders
       </a>
@@ -48,9 +50,10 @@
         *ngIf="authService.isLoggedIn$ | async"
         mat-flat-button
         color="primary"
-        matBadge="{{ agentOpenOrders.length }}"
+        matBadge="{{ (orderService.agentOpenOrders$ | async).length }}"
         matBadgePosition="after"
         matBadgeColor="accent"
+        routerLink="orders/agent-open"
       >
         Agent Open orders
       </a>

@@ -24,7 +24,7 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { OrdersTableComponent } from './components/orders-table/orders-table.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +51,7 @@ import { MatTableModule } from '@angular/material/table';
     MatBadgeModule,
     MatSortModule,
     MatTableModule,
+    MatDividerModule,
   ],
   providers: [
     {
