@@ -30,15 +30,9 @@ export class OrdersComponent implements OnInit, OnDestroy {
   ) {
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
-        if (this.pendSub != undefined) {
-          this.pendSub.unsubscribe();
-        }
-        if (this.allOpenSub != undefined) {
-          this.allOpenSub.unsubscribe();
-        }
-        if (this.agentOpenSub != undefined) {
-          this.agentOpenSub.unsubscribe();
-        }
+        this.unSub(this.pendSub);
+        this.unSub(this.allOpenSub);
+        this.unSub(this.agentOpenSub);
         this.loadOrders();
       }
     });
@@ -85,11 +79,17 @@ export class OrdersComponent implements OnInit, OnDestroy {
     this.loadOrders();
   }
   ngOnDestroy(): void {
-    this.sub1.unsubscribe();
-    this.pendSub.unsubscribe();
-    this.allOpenSub.unsubscribe();
-    this.agentOpenSub.unsubscribe();
-    this.sub5.unsubscribe();
+    this.unSub(this.sub1);
+    this.unSub(this.pendSub);
+    this.unSub(this.allOpenSub);
+    this.unSub(this.agentOpenSub);
+    this.unSub(this.sub5);
+  }
+
+  unSub(sub: Subscription) {
+    if (sub != undefined) {
+      sub.unsubscribe();
+    }
   }
 
   loadPendingOrders() {

@@ -24,6 +24,7 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
+import { OrderComponent } from './pages/order/order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { MatDividerModule } from '@angular/material/divider';
     ProfileComponent,
     LoaderComponent,
     OrdersComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
