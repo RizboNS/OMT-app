@@ -22,12 +22,17 @@ export class OrderService {
 
   private _url_find_by_field_dev =
     'http://localhost:5001/order-management-tool-api/us-central1/app/orders/by-field';
+  private _url_find_by_id =
+    'http://localhost:5001/order-management-tool-api/us-central1/app/orders/';
+
   constructor(private http: HttpClient, private loaderService: LoaderService) {}
 
-  findByField(field) {
+  findByField(field: {}) {
     return this.http.post<Order[]>(this._url_find_by_field_dev, field);
   }
-
+  findById(id: string) {
+    return this.http.get<Order>(`${this._url_find_by_id}${id}`);
+  }
   initOrders() {
     this._allLoaded$.next([false, false, false]);
     this.loaderService.isLoading = true;
