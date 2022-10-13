@@ -8,3 +8,22 @@ mat-card-title {
 .spacer {
   flex: 1 1 auto;
 }
+table {
+  width: 100%;
+  padding-top: 1rem;
+  border-spacing: 0px;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+.row {
+  cursor: pointer;
+
+}
+.row:hover {
+  background-color: #878181;
+}
+.selected {
+  background-color: orange;
+}

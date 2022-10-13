@@ -7,7 +7,27 @@
     </button>
   </mat-card-title>
   <mat-divider></mat-divider>
-  <ng-container *ngIf="(orders$ | async).length > 0">
-    <app-orders-table [orders$]="orders$"></app-orders-table>
+  <ng-container *ngIf="orders.length > 0">
+    <table matSort (matSortChange)="sortData($event)">
+      <tr>
+        <th mat-sort-header="_id">Id</th>
+        <th mat-sort-header="status">Status</th>
+        <th mat-sort-header="createdAt">Created at</th>
+        <th mat-sort-header="updatedAt">Updated at</th>
+        <th mat-sort-header="product">Product</th>
+      </tr>
+
+      <tr *ngFor="let order of sortedData; let i = index" class="row">
+        <td>{{ order._id }}</td>
+        <td>{{ order.status }}</td>
+        <td>
+          {{ order.createdAt | date }}
+        </td>
+        <td>
+          {{ order.updatedAt | date }}
+        </td>
+        <td>{{ order.product }}</td>
+      </tr>
+    </table>
   </ng-container>
 </mat-card>

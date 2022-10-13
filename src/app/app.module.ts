@@ -21,7 +21,6 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { OrdersComponent } from './pages/orders/orders.component';
-import { OrdersTableComponent } from './components/orders-table/orders-table.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
@@ -33,7 +32,6 @@ import { MatDividerModule } from '@angular/material/divider';
     ProfileComponent,
     LoaderComponent,
     OrdersComponent,
-    OrdersTableComponent,
   ],
   imports: [
     BrowserModule,
