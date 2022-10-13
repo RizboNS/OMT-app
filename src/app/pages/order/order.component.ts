@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -21,16 +22,17 @@ export class OrderComponent implements OnInit {
 
   initOrder() {
     if (this.param != '') {
-      this.orderService.findById(this.param).subscribe((res) => {
-        console.log(res);
-      });
+      this.orderService
+        .findById(this.param)
+        .pipe(take(1))
+        .subscribe((res) => {
+          console.log(res);
+        });
     }
   }
   getParams() {
-    this.route.params
-      .subscribe((params) => {
-        this.param = params['id'];
-      })
-      .unsubscribe();
+    this.route.params.pipe(take(1)).subscribe((params) => {
+      this.param = params['id'];
+    });
   }
 }
