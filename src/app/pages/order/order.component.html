@@ -1,1 +1,20 @@
-<p>order works!</p>
+<form
+  [formGroup]="orderFormGroup"
+  (ngSubmit)="onSubmit()"
+  *ngIf="orderFormGroup"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Order Id</mat-label>
+    <input matInput formControlName="_id" readonly="true" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Select</mat-label>
+    <!-- <mat-select
+      formControlName="products"
+      *ngFor="let product of this.orderFormGroup.value.products"
+    >
+      <mat-option [value]="product">{{ product }}</mat-option>
+    </mat-select> -->
+  </mat-form-field>
+  <button type="submit">Test</button>
+</form>
